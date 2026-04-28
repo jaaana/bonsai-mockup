@@ -3,81 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Spanish AI - Home</title>
+    <title>Spanish AI - Questionnaire</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
         .sagrada-light-bg {
             background-color: #fffbf5;
             background-image: 
                 radial-gradient(at 20% 30%, hsla(45, 100%, 85%, 0.4) 0px, transparent 50%),
-                radial-gradient(at 80% 10%, hsla(200, 100%, 85%, 0.3) 0px, transparent 50%),
                 radial-gradient(at 50% 80%, hsla(10, 100%, 90%, 0.4) 0px, transparent 50%);
             background-attachment: fixed;
         }
+
         .sagrada-header-texture {
             background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.07' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
         }
-        .organic-shape { border-radius: 45% 55% 70% 30% / 30% 60% 40% 70%; }
     </style>
 </head>
 <body class="bg-orange-50 h-screen flex justify-center overflow-hidden font-sans">
+
     <div class="w-full max-w-md h-full bg-white flex flex-col shadow-xl relative">
-        <header class="bg-red-800 sagrada-header-texture text-white p-6 pb-28 rounded-b-[2.5rem] shadow-lg z-10 relative overflow-hidden">
-            <div class="flex items-center justify-between relative z-20">
-                <div class="flex items-center gap-4">
-                    <div class="w-14 h-14 organic-shape bg-white flex items-center justify-center shrink-0 border-2 border-amber-400 shadow-md">
-                        <i class="fa-solid fa-user text-red-800 text-xl"></i>
-                    </div>
-                    <div>
-                        <p class="text-red-200 text-xs font-medium uppercase tracking-wider mb-0.5">Hola,</p>
-                        <h1 class="font-bold text-2xl">Student</h1>
-                    </div>
+        
+        <header class="bg-red-800 sagrada-header-texture text-white p-6 pb-12 rounded-b-[2.5rem] shadow-lg z-10 relative overflow-hidden">
+            <div class="relative z-20">
+                <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mb-3 border border-white/30 backdrop-blur-sm">
+                    <i class="fa-solid fa-clipboard-list text-xl"></i>
                 </div>
-                <div class="bg-red-900/40 px-3 py-1.5 rounded-full border border-red-500/30 text-sm font-bold">
-                    <i class="fa-solid fa-fire text-amber-400 animate-pulse"></i> 3 days
-                </div>
+                <h1 class="font-bold text-2xl leading-tight">Welcome to BonsAI!</h1>
+                <p class="text-red-200 text-sm mt-1">Let's personalize your learning journey.</p>
             </div>
+            <div class="absolute top-0 right-0 w-32 h-32 bg-white opacity-5 rounded-full -mr-10 -mt-10 blur-xl"></div>
         </header>
 
-        <main class="flex-1 overflow-y-auto px-6 -mt-16 space-y-5 sagrada-light-bg no-scrollbar z-20 pt-2">
-            <a href="setup.html" class="block bg-white p-6 rounded-3xl shadow-xl border border-white/50 active:scale-95 transition group">
-                <div class="flex justify-between items-start mb-3">
-                    <div>
-                        <h2 class="text-gray-800 font-bold text-xl">Daily Conversation</h2>
-                        <p class="text-gray-500 text-sm mt-1">Topic: The Restaurant</p>
-                    </div>
-                    <div class="w-12 h-12 bg-red-50 rounded-full flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition duration-300">
-                        <i class="fa-solid fa-comments text-xl"></i>
-                    </div>
+        <main class="flex-1 overflow-y-auto px-6 pb-6 -mt-6 space-y-8 sagrada-light-bg no-scrollbar z-20 pt-10">
+            
+            <div class="space-y-4">
+                <h2 class="text-lg font-bold text-gray-800 flex items-center gap-2">
+                    <span class="text-red-500">1.</span> What is your current Spanish level?
+                </h2>
+                
+                <div class="flex flex-wrap gap-3" id="level-options">
+                    <button onclick="selectOption('level', this, 'Total Beginner')" class="w-full py-3.5 rounded-2xl bg-white border-2 border-gray-100 shadow-sm text-gray-600 font-bold hover:border-red-200 transition-all duration-200">
+                        Total Beginner
+                    </button>
+                    <button onclick="selectOption('level', this, 'A1')" class="flex-1 py-3.5 rounded-2xl bg-white border-2 border-gray-100 shadow-sm text-gray-600 font-bold hover:border-red-200 transition-all duration-200">
+                        A1
+                    </button>
+                    <button onclick="selectOption('level', this, 'A2')" class="flex-1 py-3.5 rounded-2xl bg-white border-2 border-gray-100 shadow-sm text-gray-600 font-bold hover:border-red-200 transition-all duration-200">
+                        A2
+                    </button>
+                    <button onclick="selectOption('level', this, 'B1')" class="flex-1 py-3.5 rounded-2xl bg-white border-2 border-gray-100 shadow-sm text-gray-600 font-bold hover:border-red-200 transition-all duration-200">
+                        B1
+                    </button>
+                    <button onclick="selectOption('level', this, 'B2')" class="flex-1 py-3.5 rounded-2xl bg-white border-2 border-gray-100 shadow-sm text-gray-600 font-bold hover:border-red-200 transition-all duration-200">
+                        B2
+                    </button>
                 </div>
-                <div class="mt-6">
-                    <div class="flex justify-between text-xs font-bold mb-2">
-                        <span class="text-gray-400 uppercase tracking-wide">Word Goal</span>
-                        <span class="text-red-600 bg-red-50 px-2 py-0.5 rounded-md">0 / 5</span>
-                    </div>
-                    <div class="w-full h-3 bg-gray-100 rounded-full overflow-hidden">
-                        <div class="h-full bg-gradient-to-r from-red-500 to-amber-500 w-[10%] rounded-full shadow-md"></div>
-                    </div>
-                </div>
-                <div class="mt-5 text-sm font-bold text-red-700">Let's go <i class="fa-solid fa-arrow-right ml-2"></i></div>
-            </a>
+            </div>
 
-            <a href="dictionary.html" class="block bg-white p-5 rounded-3xl shadow-lg border border-white/50 flex items-center gap-4 active:scale-95 transition">
-                <div class="w-14 h-14 organic-shape bg-amber-50 flex items-center justify-center text-amber-500 shadow-sm">
-                    <i class="fa-solid fa-book-open text-2xl"></i>
+            <div class="space-y-4">
+                <h2 class="text-lg font-bold text-gray-800 flex items-center gap-2">
+                    <span class="text-red-500">2.</span> Why are you learning Spanish?
+                </h2>
+                
+                <div class="flex flex-wrap gap-3" id="reason-options">
+                    <button onclick="selectOption('reason', this, 'Travel')" class="flex-1 min-w-[45%] py-3.5 px-2 rounded-2xl bg-white border-2 border-gray-100 shadow-sm text-gray-600 font-bold hover:border-red-200 transition-all duration-200">
+                        ✈️ Travel
+                    </button>
+                    <button onclick="selectOption('reason', this, 'Work / Career')" class="flex-1 min-w-[45%] py-3.5 px-2 rounded-2xl bg-white border-2 border-gray-100 shadow-sm text-gray-600 font-bold hover:border-red-200 transition-all duration-200">
+                        💼 Work / Career
+                    </button>
+                    <button onclick="selectOption('reason', this, 'Talking to friends / partner')" class="w-full py-3.5 px-2 rounded-2xl bg-white border-2 border-gray-100 shadow-sm text-gray-600 font-bold hover:border-red-200 transition-all duration-200">
+                        💬 Friends / Partner
+                    </button>
+                    <button onclick="selectOption('reason', this, 'School / Exams')" class="flex-1 min-w-[45%] py-3.5 px-2 rounded-2xl bg-white border-2 border-gray-100 shadow-sm text-gray-600 font-bold hover:border-red-200 transition-all duration-200">
+                        📚 School / Exams
+                    </button>
+                    <button onclick="selectOption('reason', this, 'Just for fun')" class="flex-1 min-w-[45%] py-3.5 px-2 rounded-2xl bg-white border-2 border-gray-100 shadow-sm text-gray-600 font-bold hover:border-red-200 transition-all duration-200">
+                        🎉 Just for fun
+                    </button>
                 </div>
-                <div>
-                    <h3 class="font-bold text-gray-800 text-lg">My Dictionary</h3>
-                    <p class="text-xs text-gray-400 font-medium">142 words learned</p>
-                </div>
-            </a>
+            </div>
+            <div class="h-4"></div>
         </main>
-        <footer class="py-4 text-center text-[10px] text-red-300 font-medium uppercase tracking-widest bg-white z-20">
-            BonsAI Prototype
+
+        <footer class="p-4 bg-white border-t border-red-50 shadow-[0_-4px_20px_rgba(0,0,0,0.05)] z-20">
+            <button id="finish-btn" onclick="finishQuestionnaire()" disabled 
+                class="w-full bg-gray-200 text-gray-400 font-bold text-lg py-4 rounded-2xl transition-all duration-300 flex items-center justify-center gap-3">
+                Go to Dashboard <i class="fa-solid fa-arrow-right"></i>
+            </button>
         </footer>
+
     </div>
+
+    <script>
+        // Store the user's choices
+        let answers = {
+            level: null,
+            reason: null
+        };
+
+        function selectOption(category, btnElement, value) {
+            answers[category] = value;
+
+            // 1. Reset all buttons in this specific category
+            const container = document.getElementById(`${category}-options`);
+            const buttons = container.querySelectorAll('button');
+            buttons.forEach(btn => {
+                btn.classList.remove('border-red-400', 'bg-red-50', 'text-red-700');
+                btn.classList.add('border-gray-100', 'bg-white', 'text-gray-600');
+            });
+
+            // 2. Highlight the newly clicked button
+            btnElement.classList.remove('border-gray-100', 'bg-white', 'text-gray-600');
+            btnElement.classList.add('border-red-400', 'bg-red-50', 'text-red-700');
+
+            // 3. Check if we can activate the Continue button
+            checkCompletion();
+        }
+
+        function checkCompletion() {
+            const finishBtn = document.getElementById('finish-btn');
+            
+            if (answers.level && answers.reason) {
+                finishBtn.disabled = false;
+                
+                // Remove disabled styles
+                finishBtn.classList.remove('bg-gray-200', 'text-gray-400');
+                
+                // Add active, colorful styles
+                finishBtn.classList.add(
+                    'bg-gradient-to-r', 'from-red-600', 'to-red-500', 
+                    'text-white', 'shadow-lg', 'shadow-red-200', 
+                    'active:scale-[0.98]', 'hover:from-red-700'
+                );
+            }
+        }
+
+        function finishQuestionnaire() {
+            if (answers.level && answers.reason) {
+                // Save the data so you can use it later in your app
+                localStorage.setItem('userLevel', answers.level);
+                localStorage.setItem('userReason', answers.reason);
+                
+                // Redirect to the dashboard
+                window.location.href = 'home.html';
+            }
+        }
+    </script>
 </body>
 </html>

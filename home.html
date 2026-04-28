@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Spanish AI - Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .sagrada-light-bg {
+            background-color: #fffbf5;
+            background-image: 
+                radial-gradient(at 20% 30%, hsla(45, 100%, 85%, 0.4) 0px, transparent 50%),
+                radial-gradient(at 80% 10%, hsla(200, 100%, 85%, 0.3) 0px, transparent 50%),
+                radial-gradient(at 50% 80%, hsla(10, 100%, 90%, 0.4) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+        .sagrada-header-texture {
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.07' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+        }
+        .organic-shape { border-radius: 45% 55% 70% 30% / 30% 60% 40% 70%; }
+    </style>
+</head>
+<body class="bg-orange-50 h-screen flex justify-center overflow-hidden font-sans">
+    <div class="w-full max-w-md h-full bg-white flex flex-col shadow-xl relative">
+        <header class="bg-red-800 sagrada-header-texture text-white p-6 pb-28 rounded-b-[2.5rem] shadow-lg z-10 relative overflow-hidden">
+            <div class="flex items-center justify-between relative z-20">
+                <div class="flex items-center gap-4">
+                    <div class="w-14 h-14 organic-shape bg-white flex items-center justify-center shrink-0 border-2 border-amber-400 shadow-md">
+                        <i class="fa-solid fa-user text-red-800 text-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-red-200 text-xs font-medium uppercase tracking-wider mb-0.5">Hola,</p>
+                        <h1 class="font-bold text-2xl">Student</h1>
+                    </div>
+                </div>
+                <div class="bg-red-900/40 px-3 py-1.5 rounded-full border border-red-500/30 text-sm font-bold">
+                    <i class="fa-solid fa-fire text-amber-400 animate-pulse"></i> 3 days
+                </div>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-y-auto px-6 -mt-16 space-y-5 sagrada-light-bg no-scrollbar z-20 pt-2">
+            <a href="setup.html" class="block bg-white p-6 rounded-3xl shadow-xl border border-white/50 active:scale-95 transition group">
+                <div class="flex justify-between items-start mb-3">
+                    <div>
+                        <h2 class="text-gray-800 font-bold text-xl">Daily Conversation</h2>
+                        <p class="text-gray-500 text-sm mt-1">Topic: The Restaurant</p>
+                    </div>
+                    <div class="w-12 h-12 bg-red-50 rounded-full flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition duration-300">
+                        <i class="fa-solid fa-comments text-xl"></i>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <div class="flex justify-between text-xs font-bold mb-2">
+                        <span class="text-gray-400 uppercase tracking-wide">Word Goal</span>
+                        <span class="text-red-600 bg-red-50 px-2 py-0.5 rounded-md">0 / 5</span>
+                    </div>
+                    <div class="w-full h-3 bg-gray-100 rounded-full overflow-hidden">
+                        <div class="h-full bg-gradient-to-r from-red-500 to-amber-500 w-[10%] rounded-full shadow-md"></div>
+                    </div>
+                </div>
+                <div class="mt-5 text-sm font-bold text-red-700">Let's go <i class="fa-solid fa-arrow-right ml-2"></i></div>
+            </a>
+
+            <a href="dictionary.html" class="block bg-white p-5 rounded-3xl shadow-lg border border-white/50 flex items-center gap-4 active:scale-95 transition">
+                <div class="w-14 h-14 organic-shape bg-amber-50 flex items-center justify-center text-amber-500 shadow-sm">
+                    <i class="fa-solid fa-book-open text-2xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-800 text-lg">My Dictionary</h3>
+                    <p class="text-xs text-gray-400 font-medium">142 words learned</p>
+                </div>
+            </a>
+        </main>
+        <footer class="py-4 text-center text-[10px] text-red-300 font-medium uppercase tracking-widest bg-white z-20">
+            BonsAI Prototype
+        </footer>
+    </div>
+</body>
+</html>
