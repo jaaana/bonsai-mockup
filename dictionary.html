@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Spanish AI - Dictionary</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-orange-50 h-screen flex justify-center font-sans">
+    <div class="w-full max-w-md h-full bg-white flex flex-col shadow-xl">
+        <header class="bg-red-800 text-white p-4 flex items-center gap-3">
+            <a href="index.html" class="p-2"><i class="fa-solid fa-arrow-left"></i></a>
+            <div>
+                <h1 class="font-bold text-lg">My Dictionary</h1>
+                <p class="text-xs text-red-200" id="word-count">24 words learned</p>
+            </div>
+        </header>
+
+        <div class="p-4 border-b">
+            <div class="relative">
+                <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                <input type="text" placeholder="Search for a word..." class="w-full bg-gray-50 rounded-full py-3 pl-10 pr-4 outline-none border border-gray-200">
+            </div>
+        </div>
+
+        <main class="flex-1 overflow-y-auto p-4 space-y-3" id="word-list">
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex justify-between items-center">
+                <div>
+                    <p class="font-bold text-gray-800">La Cuenta</p>
+                    <p class="text-sm text-gray-400 italic">The bill / check</p>
+                </div>
+                <i class="fa-solid fa-volume-high text-orange-400"></i>
+            </div>
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex justify-between items-center">
+                <div>
+                    <p class="font-bold text-gray-800">Tarjeta</p>
+                    <p class="text-sm text-gray-400 italic">Card</p>
+                </div>
+                <i class="fa-solid fa-volume-high text-orange-400"></i>
+
+            </div>
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex justify-between items-center">
+                <div>
+                    <p class="font-bold text-gray-800">Mira</p>
+                    <p class="text-sm text-gray-400 italic">Look</p>
+                </div>
+                <i class="fa-solid fa-volume-high text-orange-400"></i>
+
+            </div>
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex justify-between items-center">
+                <div>
+                    <p class="font-bold text-gray-800">Dime</p>
+                    <p class="text-sm text-gray-400 italic">Ok</p>
+                </div>
+                <i class="fa-solid fa-volume-high text-orange-400"></i>
+
+            </div>
+        </main>
+    </div>
+</body>
+</html>

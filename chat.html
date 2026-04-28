@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Spanish AI - Chat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .sagrada-light-bg { background-color: #fffbf5; background-image: radial-gradient(at 20% 30%, hsla(45, 100%, 85%, 0.4) 0px, transparent 50%), radial-gradient(at 80% 10%, hsla(200, 100%, 85%, 0.3) 0px, transparent 50%); background-attachment: fixed; }
+        .sagrada-header-texture { background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.07' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E"); }
+        .organic-shape { border-radius: 45% 55% 70% 30% / 30% 60% 40% 70%; }
+        .tooltip-anim { animation: popIn 0.2s ease-out forwards; }
+        @keyframes popIn { 0% { opacity: 0; transform: translate(-50%, 10px); } 100% { opacity: 1; transform: translate(-50%, 0); } }
+    </style>
+</head>
+<body class="bg-orange-50 h-screen flex justify-center overflow-hidden font-sans">
+    <div class="w-full max-w-md h-full bg-white flex flex-col shadow-xl relative">
+        <header class="bg-red-800 sagrada-header-texture text-white p-4 flex items-center justify-between shadow-md z-10 relative">
+            <div class="flex items-center gap-3 relative z-20">
+                <a href="index.html" class="hover:bg-red-700 p-2 rounded-full transition flex items-center justify-center"><i class="fa-solid fa-arrow-left"></i></a>
+                <div>
+                    <h1 class="font-bold text-lg">Chat Session</h1>
+                    <div class="text-xs text-red-200 flex items-center gap-1"><span class="w-2 h-2 bg-green-400 rounded-full"></span> Goal: 5 words</div>
+                </div>
+            </div>
+            <button class="text-amber-400 p-2"><i class="fa-solid fa-gear"></i></button>
+        </header>
+
+        <main class="flex-1 overflow-y-auto p-4 space-y-6 sagrada-light-bg no-scrollbar" id="chat-container">
+            <div class="flex gap-3 items-start">
+                <div class="w-10 h-10 organic-shape bg-red-100 flex items-center justify-center shrink-0 border-2 border-red-200 shadow-sm text-red-800">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+                <div class="flex flex-col gap-1 max-w-[85%]">
+                    <div class="bg-white/95 backdrop-blur-sm p-4 rounded-2xl rounded-tl-none shadow-sm border border-red-50 text-gray-800 leading-relaxed">
+                        ¡Hola! Bienvenido al restaurante. Aquí tienes la 
+                        <span class="relative inline-block cursor-pointer" onclick="toggleTooltip(this)">
+                            <span class="border-b-2 border-green-500 text-green-700 font-bold px-0.5">carta</span>
+                            <div class="tooltip hidden absolute bottom-full left-1/2 -translate-x-1/2 mb-3 px-3 py-1.5 bg-gray-900 text-amber-400 font-medium text-xs rounded-lg shadow-lg z-20">menu</div>
+                        </span>. 
+                        ¿Deseas pedir una 
+                        <span class="relative inline-block cursor-pointer" onclick="toggleTooltip(this)">
+                            <span class="border-b-2 border-green-500 text-green-700 font-bold px-0.5">bebida</span>
+                            <div class="tooltip hidden absolute bottom-full left-1/2 -translate-x-1/2 mb-3 px-3 py-1.5 bg-gray-900 text-amber-400 font-medium text-xs rounded-lg shadow-lg z-20">drink</div>
+                        </span> 
+                        primero, o prefieres ver los 
+                        <span class="relative inline-block cursor-pointer" onclick="toggleTooltip(this)">
+                            <span class="border-b-2 border-green-500 text-green-700 font-bold px-0.5">platos</span>
+                            <div class="tooltip hidden absolute bottom-full left-1/2 -translate-x-1/2 mb-3 px-3 py-1.5 bg-gray-900 text-amber-400 font-medium text-xs rounded-lg shadow-lg z-20">dishes</div>
+                        </span> 
+                        principales? Guarda espacio para los 
+                        <span class="relative inline-block cursor-pointer" onclick="toggleTooltip(this)">
+                            <span class="border-b-2 border-green-500 text-green-700 font-bold px-0.5">postres</span>
+                            <div class="tooltip hidden absolute bottom-full left-1/2 -translate-x-1/2 mb-3 px-3 py-1.5 bg-gray-900 text-amber-400 font-medium text-xs rounded-lg shadow-lg z-20">desserts</div>
+                        </span>, 
+                        y cuando termines, te traeré la 
+                        <span class="relative inline-block cursor-pointer" onclick="toggleTooltip(this)">
+                            <span class="border-b-2 border-green-500 text-green-700 font-bold px-0.5">cuenta</span>
+                            <div class="tooltip hidden absolute bottom-full left-1/2 -translate-x-1/2 mb-3 px-3 py-1.5 bg-gray-900 text-amber-400 font-medium text-xs rounded-lg shadow-lg z-20">bill / check</div>
+                        </span>.
+                    </div>
+                    <button onclick="speak('¡Hola! Bienvenido al restaurante. Aquí tienes la carta. ¿Deseas pedir una bebida primero, o prefieres ver los platos principales? Guarda espacio para los postres, y cuando termines, te traeré la cuenta.')" class="self-start text-xs text-red-600 font-bold ml-1 flex items-center gap-1"><i class="fa-solid fa-volume-high"></i> Listen</button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="bg-white p-3 border-t border-red-100 flex items-center gap-2 z-10">
+            <button class="w-10 h-10 flex items-center justify-center rounded-full bg-red-50 text-red-400"><i class="fa-solid fa-keyboard"></i></button>
+            <input type="text" placeholder="Speak or type your answer..." class="flex-1 bg-gray-50 border border-gray-100 rounded-full py-3 px-4 focus:ring-2 focus:ring-red-500 outline-none">
+            <button class="w-12 h-12 flex items-center justify-center rounded-full bg-red-700 text-white shadow-lg active:scale-95 transition"><i class="fa-solid fa-microphone"></i></button>
+        </footer>
+    </div>
+    <script>
+        function speak(text) { const u = new SpeechSynthesisUtterance(text); u.lang = 'es-ES'; window.speechSynthesis.speak(u); }
+        function toggleTooltip(el) { const t = el.querySelector('.tooltip'); t.classList.toggle('hidden'); t.classList.toggle('tooltip-anim'); }
+    </script>
+</body>
+</html>
